@@ -1,5 +1,9 @@
 import React, {  useEffect, useState } from 'react'
 import axios from "axios";
+import MenuItem from '@mui/material/MenuItem';
+import FormControl from '@mui/material/FormControl';
+import Select from '@mui/material/Select';
+import InputLabel from '@mui/material/InputLabel';
 
 export default function Display() {
     const [data,setData]=useState([]);
@@ -17,7 +21,21 @@ export default function Display() {
     
   return (
     <div>
-
+      <FormControl sx={{ m: 1, minWidth: 320 }}>
+        <InputLabel id="demo-controlled-open-select-label">Divisions</InputLabel>
+        <Select
+          labelId="demo-controlled-open-select-label"
+          id="demo-controlled-open-select"
+          label="Divisions"
+        >
+          <MenuItem value="">
+            <em>None</em>
+          </MenuItem>
+          <MenuItem value="england-and-wales">england-and-wales</MenuItem>
+          <MenuItem value="northern-ireland">northern-ireland</MenuItem>
+          <MenuItem value="scotland">scotland</MenuItem>
+        </Select>
+      </FormControl>
     </div>
   )
 }
