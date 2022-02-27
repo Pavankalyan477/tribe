@@ -6,6 +6,7 @@ import Select from "@mui/material/Select";
 import InputLabel from "@mui/material/InputLabel";
 import TextField from "@mui/material/TextField";
 
+
 export default function Display() {
   const [data, setData] = useState([]);
 
@@ -22,6 +23,7 @@ export default function Display() {
 
   return (
     <div>
+      <h3>Select Your Division here:</h3>
       <FormControl sx={{ m: 1, minWidth: 320 }}>
         <InputLabel id="demo-controlled-open-select-label">
           Divisions
@@ -38,9 +40,12 @@ export default function Display() {
           <MenuItem value="northern-ireland">northern-ireland</MenuItem>
           <MenuItem value="scotland">scotland</MenuItem>
         </Select>
+        <br />
+        <div style={{display:"flex",flexDirection:"row"}}>
+        <h5>Select Your Particular Date here:</h5>
         <TextField
           id="date"
-          label="Birthday"
+          label="Date"
           type="date"
           defaultValue="yyyy-mm-dd"
           sx={{ width: 220 }}
@@ -48,6 +53,37 @@ export default function Display() {
             shrink: true,
           }}
         />
+      
+        OR
+        <h5>Select Your Custom Dates range here:</h5>
+        {/* <div style={{display:"flex",flexDirection:"row",gap:"45%"}}>
+          <label ><strong>FROM :</strong></label>
+          <label ><strong>TO :</strong></label>
+        </div> */}
+        <br />
+        <div style={{display:"flex",flexDirection:"row",gap:"5%"}}>
+         <TextField
+          id="date"
+          label="FROM"
+          type="date"
+          defaultValue="yyyy-mm-dd"
+          sx={{ width: 220 }}
+          InputLabelProps={{
+            shrink: true,
+          }}
+        />
+        <TextField
+          id="date"
+          label="TO"
+          type="date"
+          defaultValue="yyyy-mm-dd"
+          sx={{ width: 220 }}
+          InputLabelProps={{
+            shrink: true,
+          }}
+        />
+        </div>
+        </div>
       </FormControl>
     </div>
   );
