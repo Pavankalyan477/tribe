@@ -5,7 +5,7 @@ const User = require("../models/user.model");
 
 var welcome="Congratualtions...,! Successfully completed."
 
-//post vehicle 
+// Creating User Data for Signup
 
 router.post("/", async (req, res) => {
     let data = await User.create(req.body);
@@ -13,6 +13,7 @@ router.post("/", async (req, res) => {
     return res.status(201).send({data,welcome});
 })
 
+//Getting the data from the server for Signup
 
 router.get("/", async (req, res) => {
     let data = await User.find().lean().exec();
@@ -20,6 +21,8 @@ router.get("/", async (req, res) => {
 
     return res.status(200).send({data,welcome})
 })
+
+//Updating the user details for Signup
 
 router.patch("/update/:id", async (req, res) => {
     let data = await User.findByIdAndUpdate(req.params.id, req.body, {new : true});
@@ -29,8 +32,7 @@ router.patch("/update/:id", async (req, res) => {
 
 
 
-//findbyid 
-
+//Finding the user details 
 
 router.get("/one/:id", async (req, res) => {
     let data = await User.findById(req.params.id).lean().exec();
