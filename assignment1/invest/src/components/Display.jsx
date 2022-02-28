@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, {  useState } from "react";
 import axios from "axios";
 import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
@@ -11,23 +11,26 @@ export default function Display() {
   const [from, setFrom] = useState("");
   const [to, setTo] = useState("");
   const [division, setDivision] = useState("");
-  const [custom, setCustom] = useState([]);
+  // const [custom, setCustom] = useState([]);
 
-  const fetchData = async () => {
+  const fetchData = async (div) => {
     const result = await axios.get("http://gov.uk/bank-holidays.json");
-    console.log("data", result.data["northern-ireland"].events);
-    return result.data;
+    setData(result.data[div].events)
   };
-  useEffect(() => {
-    fetchData();
-  }, []);
 
-  // if (division === "england-and-wales") {
-  //   fetchData("england-and-wales");
-  //   //  setCustom(res.data.england-and-wales.events);
-  // } else if (division === "northern-ireland") {
-  // } else if (division === "scotland") {
-  // }
+  if (division === "england-and-wales") {
+    fetchData("england-and-wales");
+  } else if (division === "northern-ireland") {
+    fetchData("northern-ireland");
+  } else if (division === "scotland") {
+    fetchData("scotland");
+  }
+
+  const handlechange=()=>{
+      let value1=from.split("-").reverse().join("-");
+      let value2=to.split("-").reverse().join("-");
+      console.log(value1,value2)
+  }
 
   return (
     <div>
@@ -78,6 +81,7 @@ export default function Display() {
                 shrink: true,
               }}
             />
+            <button onClick={handlechange}>CUSTOM DATES</button>
           </div>
         </div>
         <br />
